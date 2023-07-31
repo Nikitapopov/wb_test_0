@@ -1,0 +1,4 @@
+time="2023-07-31T14:19:32+03:00" level=info msg="Inserted order with id = cab49597b63e44edb07e333c33a01f99" func="wb_test_1/internal/consumer.Start.func1()" file="consumer.go:55"
+time="2023-07-31T14:19:40+03:00" level=info msg="Inserted order with id = f2d4df5ee8dc41788b3b1262ccb996cc" func="wb_test_1/internal/consumer.Start.func1()" file="consumer.go:55"
+time="2023-07-31T14:19:40+03:00" level=info msg="Inserted order with id = bfa48b1590b0422caecebaddb3950301" func="wb_test_1/internal/consumer.Start.func1()" file="consumer.go:55"
+time="2023-07-31T14:19:41+03:00" level=info msg="Inserted order with id = 025ce9781d46429e8dc648348f63367f" func="wb_test_1/internal/consumer.Start.func1()" file="consumer.go:55"

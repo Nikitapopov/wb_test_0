@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
-	"wb_test_1/internal/order"
+	"wb_test_1/internal/models/order"
 
 	"github.com/go-faker/faker/v4"
 	"github.com/go-faker/faker/v4/pkg/options"

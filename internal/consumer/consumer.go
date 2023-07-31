@@ -4,7 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"wb_test_1/internal/logger"
-	"wb_test_1/internal/order"
+	"wb_test_1/internal/models/order"
+	"wb_test_1/internal/order_service"
 
 	"github.com/nats-io/stan.go"
 )
@@ -19,7 +20,7 @@ const (
 	DefaultNatsURL = "nats://127.0.0.1:4222"
 )
 
-func Start(orderService ConsumerServicer, c order.CacheRepositoryWorker, logger logger.Logger) {
+func Start(orderService ConsumerServicer, c order_service.CacheRepositoryWorker, logger logger.Logger) {
 	natsUrl := stan.NatsURL(DefaultNatsURL)
 	sc, err := stan.Connect(clusterID, clientID, natsUrl)
 	if err != nil {

@@ -3,7 +3,7 @@ package manager
 import (
 	"errors"
 	"net/http"
-	"wb_test_1/internal/order"
+	"wb_test_1/internal/models/order"
 	"wb_test_1/pkg/api_helper"
 
 	"github.com/go-chi/chi"

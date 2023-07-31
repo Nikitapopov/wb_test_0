@@ -1,30 +1,31 @@
-package order
+package order_service
 
 import (
 	"fmt"
 	"wb_test_1/internal/logger"
+	"wb_test_1/internal/models/order"
 )
 
 type DbRepositoryWorker interface {
-	GetById(id string) (*Order, error)
-	GetAll() ([]*Order, error)
-	Insert(Order) error
+	GetById(id string) (*order.Order, error)
+	GetAll() ([]*order.Order, error)
+	Insert(order.Order) error
 }
 
 type CacheRepositoryWorker interface {
-	GetById(string) (*Order, error)
+	GetById(string) (*order.Order, error)
 	GetIdsList() []string
-	Insert(string, Order) error
+	Insert(string, order.Order) error
 }
 
-type Service struct {
+type orderService struct {
 	dbRepo    DbRepositoryWorker
 	cacheRepo CacheRepositoryWorker
 	logger    logger.Logger
 }
 
 func NewService(dbRepo DbRepositoryWorker, cacheRepo CacheRepositoryWorker, logger logger.Logger) OrderServicer {
-	service := &Service{
+	service := &orderService{
 		dbRepo:    dbRepo,
 		cacheRepo: cacheRepo,
 		logger:    logger,
@@ -37,7 +38,7 @@ func NewService(dbRepo DbRepositoryWorker, cacheRepo CacheRepositoryWorker, logg
 	return service
 }
 
-func (s *Service) syncCacheWithDb() error {
+func (s *orderService) syncCacheWithDb() error {
 	orders, err := s.dbRepo.GetAll()
 	if err != nil {
 		return fmt.Errorf("receiving all orders from db: %v", err)
@@ -51,15 +52,15 @@ func (s *Service) syncCacheWithDb() error {
 	return nil
 }
 
-func (s *Service) GetById(id string) (*Order, error) {
+func (s *orderService) GetById(id string) (*order.Order, error) {
 	return s.cacheRepo.GetById(id)
 }
 
-func (s *Service) GetIdsList() []string {
+func (s *orderService) GetIdsList() []string {
 	return s.cacheRepo.GetIdsList()
 }
 
-func (s *Service) Insert(order Order) error {
+func (s *orderService) Insert(order order.Order) error {
 	if err := s.dbRepo.Insert(order); err != nil {
 		return fmt.Errorf("inserting order to db: %v", err)
 	}

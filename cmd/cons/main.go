@@ -9,7 +9,7 @@ import (
 	"wb_test_1/internal/consumer"
 	"wb_test_1/internal/logger"
 	"wb_test_1/internal/manager"
-	"wb_test_1/internal/order"
+	"wb_test_1/internal/order_service"
 	pg_order_repo "wb_test_1/internal/pg/order"
 	"wb_test_1/pkg/go_cache"
 	pg "wb_test_1/pkg/postgres"
@@ -36,7 +36,7 @@ func main() {
 	goCacheClient := go_cache.NewGoCacher()
 	cacheOrderRepo := order_repo_cache.NewRepo(goCacheClient, logger)
 
-	orderService := order.NewService(dbOrderRepo, cacheOrderRepo, logger)
+	orderService := order_service.NewService(dbOrderRepo, cacheOrderRepo, logger)
 	managerHandler := manager.NewHandler(orderService)
 	go consumer.Start(orderService, cacheOrderRepo, logger)
 

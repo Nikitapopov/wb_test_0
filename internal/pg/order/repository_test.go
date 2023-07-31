@@ -5,8 +5,8 @@ import (
 	"reflect"
 	"regexp"
 	"testing"
-	"wb_test_1/internal/logger"
-	"wb_test_1/internal/order"
+	"wb_test_1/internal/logger/mocks"
+	"wb_test_1/internal/models/order"
 
 	"github.com/DATA-DOG/go-sqlmock"
 )
@@ -143,7 +143,7 @@ func Test_pg_repository_GetById(t *testing.T) {
 		},
 	}
 
-	logger := logger.NewMockLogger()
+	logger := mocks.NewMockLogger()
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -361,7 +361,7 @@ func Test_pg_repository_GetAll(t *testing.T) {
 		},
 	}
 
-	logger := logger.NewMockLogger()
+	logger := mocks.NewMockLogger()
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -605,7 +605,7 @@ func Test_pg_repository_Insert(t *testing.T) {
 		},
 	}
 
-	logger := logger.NewMockLogger()
+	logger := mocks.NewMockLogger()
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

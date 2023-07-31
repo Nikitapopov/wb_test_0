@@ -1,4 +1,4 @@
-package logger
+package mocks
 
 type MockLogger interface {
 	Error(args ...interface{})

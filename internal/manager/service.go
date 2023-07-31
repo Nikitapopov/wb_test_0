@@ -1,8 +1,6 @@
 package manager
 
-import (
-	"wb_test_1/internal/order"
-)
+import "wb_test_1/internal/models/order"
 
 type ManagerServicer interface {
 	GetById(id string) (*order.Order, error)

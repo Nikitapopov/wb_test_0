@@ -6,7 +6,8 @@ import (
 	"fmt"
 	"time"
 	"wb_test_1/internal/logger"
-	"wb_test_1/internal/order"
+	"wb_test_1/internal/models/order"
+	"wb_test_1/internal/order_service"
 )
 
 const dbTimeout = time.Second * 3
@@ -16,7 +17,7 @@ type repository struct {
 	logger logger.Logger
 }
 
-func NewRepo(db *sql.DB, logger logger.Logger) order.DbRepositoryWorker {
+func NewRepo(db *sql.DB, logger logger.Logger) order_service.DbRepositoryWorker {
 	return &repository{
 		conn:   db,
 		logger: logger,

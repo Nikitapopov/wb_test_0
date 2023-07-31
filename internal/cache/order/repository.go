@@ -4,7 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"wb_test_1/internal/logger"
-	"wb_test_1/internal/order"
+	"wb_test_1/internal/models/order"
+	"wb_test_1/internal/order_service"
 	"wb_test_1/pkg/go_cache"
 )
 
@@ -13,13 +14,7 @@ type repository struct {
 	logger logger.Logger
 }
 
-type OrderCacheRepositoryWorker interface {
-	GetById(id string) (*order.Order, error)
-	GetAll() ([]order.Order, error)
-	Insert(order.Order) error
-}
-
-func NewRepo(client go_cache.GoCacher, logger logger.Logger) order.CacheRepositoryWorker {
+func NewRepo(client go_cache.GoCacher, logger logger.Logger) order_service.CacheRepositoryWorker {
 	return &repository{
 		client: client,
 		logger: logger,

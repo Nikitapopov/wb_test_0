@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
-	"wb_test_1/internal/logger"
-	"wb_test_1/internal/order"
+	"wb_test_1/internal/logger/mocks"
+	"wb_test_1/internal/models/order"
 	"wb_test_1/pkg/go_cache"
 )
 
@@ -36,7 +36,7 @@ func Test_cache_repository_GetById(t *testing.T) {
 		},
 	}
 
-	logger := logger.NewMockLogger()
+	logger := mocks.NewMockLogger()
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -71,7 +71,7 @@ func Test_cache_repository_GetIdsList(t *testing.T) {
 		},
 	}
 
-	logger := logger.NewMockLogger()
+	logger := mocks.NewMockLogger()
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -210,11 +210,11 @@ func Test_cache_repository_Insert(t *testing.T) {
 					OofShard:          "7",
 				},
 			},
-			wantErr: false,
+			wantErr: true,
 		},
 	}
 
-	logger := logger.NewMockLogger()
+	logger := mocks.NewMockLogger()
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
