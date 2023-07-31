@@ -2,7 +2,6 @@ package go_cache
 
 import (
 	"errors"
-	"fmt"
 
 	goCache "github.com/patrickmn/go-cache"
 )
@@ -38,7 +37,5 @@ func (c *mockCache) Get(k string) (interface{}, bool) {
 }
 
 func (c *mockCache) GetKeys() []string {
-	x := []string{"id_1", "id_2", "id_3"}
-	fmt.Printf("x: %v\n", x)
-	return x
+	return []string{"id_1", "id_2", "id_3"}
 }
