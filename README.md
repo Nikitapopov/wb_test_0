@@ -1,4 +1,4 @@
-# wb_test_1
+# wb_test_0
 
 Инициализация и запуск postgres, запуск nats-streaming сервера
 ```
